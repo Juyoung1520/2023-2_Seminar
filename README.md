@@ -76,9 +76,4 @@
 
 ***
 ## 학회 정보
-
-* Notion: 
-
-* Instagram: https://www.instagram.com/dat.hufs/
-
-* Naver Cafe: https://cafe.naver.com/hufsdat
+https://linktr.ee/dat0406
