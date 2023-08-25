@@ -58,3 +58,27 @@
 ## 운영진
 
 ***
+
+## Tools
+<div align="center">
+	<img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=Python&logoColor=yellow" />
+	<img src="https://img.shields.io/badge/R-276DC3?style=flat&logo=R&logoColor=white" />
+</div>
+
+<div align="center">
+	<img src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white" />
+	<img src="https://img.shields.io/badge/Slack-4A154B?style=flat&logo=Slack&logoColor=orange" />
+</div>
+
+<div align="center">
+	<img src="https://img.shields.io/badge/Github-181717?style=flat&logo=Github&logoColor=white" />
+</div>
+
+***
+## 학회 정보
+
+* Notion: 
+
+* Instagram: https://www.instagram.com/dat.hufs/
+
+* Naver Cafe: https://cafe.naver.com/hufsdat
