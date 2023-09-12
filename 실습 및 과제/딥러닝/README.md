@@ -1,4 +1,4 @@
-### 팀명_n차_실습코드
+### 팀명_n차_실습코드 or 팀명_n차_과제
 ### 확장자
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=Python&logoColor=yellow" /> .ipynb 
 
