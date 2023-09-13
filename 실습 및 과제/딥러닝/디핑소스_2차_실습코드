@@ -1,0 +1,255 @@
+<aside>
+🦈 1.  ****Image Classification****
+
+</aside>
+
+## 1. ****Image Classification****
+
+> The problem: semantic gap
+: 의미상의 차이인데, 이는 우리가 이미지를 눈으로 받아들이는 방식과는 달리 **컴퓨터는 픽셀 값으로 받아들이기 때문에 생기는 문제들을 일컫는 것**
+> 
+
+1) **Viewpoint variation** : 객체를 보는 시각에 따른 차이
+
+2) **Illumination** : 객체에 쏘인 조명에서 발생되는 차이
+
+3) **Deformation** : 객체의 형태 변화에 발생되는 차이
+
+4) **Occlusion** : 객체가 가려져서 발생되는 차이
+
+5) **Background** **clutter** : 객체와 배경의 패턴이나 색이 구분이 안되면서 나오는 차이
+
+6) **Intraclass variation** : 같은 객체들도 여러 class로 나뉘는 문제
+
+### 이미지 접근 방법
+
+1. 이미지 및 라벨 데이터 세트 수집
+2. 기계 학습을 사용하여 분류기 훈련
+3. 새 이미지에 대한 분류기를 평가
+
+## 2. Data - driven approach : Nearest Neighbor & K-NN, Linear clssifier
+
+<aside>
+🦈 **1. Nearest Neighbor
+:** 입력받은 데이터를 저장한 다음 새로운 입력 데이터가 들어오면, 기존 데이터에서 비교하여 가장 유사한 데이터를 찾아내는 방식이다.
+
+</aside>
+
+> CIFAR-10 (10가지 종류의 물체와 동물을 모은 사진 데이터를 사용
+> 
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/851d425a-653f-4e2d-bfaa-a5562b5301ab/Untitled.png)
+
+<aside>
+🦈 2. ****K-Nearest Neighbor: Distance Metric****
+: distance metric을 이용해서 가까운 이웃을 k개만큼 찾고, 이웃 간에 투표를 하여 득표수가 많이 얻은 label로 예측하는 방법
+
+</aside>
+
+> ****K-Nearest Neighbor 과정****
+> 
+1. Train 과정 : 모든 train data를 기억한다.
+2. Predict 과정 : 입력 데이터를 train data와 비교하여 어떤 label 값을 가질지 예측한다.
+
+![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/8527b657-9b46-4815-b2fb-481e166f63f1/image.png)
+
+시간복잡도: Train O(1), predict O(N)
+
+> **Parameter of K-Nearest Neighbors
+1. Distance metric(L1, L2)
+2. K**
+> 
+
+**1. Distance metric(L1, L2)**
+
+![images_cha-suyeon_post_5d799b42-ff9b-4d2d-9680-bc6a59d29a81_image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/c6ef3f5b-0fa4-4ae6-a92f-dd884d45a114/images_cha-suyeon_post_5d799b42-ff9b-4d2d-9680-bc6a59d29a81_image.png)
+
+![images_cha-suyeon_post_decb8802-bad5-4fba-937e-38476ef02dcf_image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/56f9960f-cd4b-440f-8d81-23494726be4d/images_cha-suyeon_post_decb8802-bad5-4fba-937e-38476ef02dcf_image.png)
+
+- L1 Distance가 마름모 형태라면, L2 Distance는 원형의 형태로, 기하학적으로 구조 자체가 다르다. 또한 L1 Distance는 좌표계를 회전 시 거리값이 달라지지만 L2 Distance는 좌표의 영향을 받지 않는다.
+
+→ KNN을 사용하려면 학습 전 사전에 K와 거리척도인 **“하이퍼 파라미터”** 를 선택해야 한다.
+
+**2. K closest points**
+
+![images_cha-suyeon_post_9eaede40-0fef-4718-abba-198160e0e3e9_image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/9929cb7e-5c66-4c84-af7a-245bd09df296/images_cha-suyeon_post_9eaede40-0fef-4718-abba-198160e0e3e9_image.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/2a61ff9b-96dd-4f6b-a3d5-c76cdd284f00/Untitled.png)
+
+- k가 1일 때는 결정 경계가 훈련 데이터에 가깝게 따라간다. k가 증가하면 결정 경계는 부드러워지면서 더욱 단순한 모델이 된다.
+
+**하이퍼 파라미터**도 2개나 생겼고, 이를 통해 모델 성능을 높일 수 있게 되었기 때문에 NN보다는 훨씬 성능이 좋다.
+
+## 3.Hyperparameter
+
+> **최적의 Hyperparameter 찾기**
+> 
+1. 가장 간단한 방법은 데이터에 맞게 다양한 하이퍼파라미터 값을 시도해보고 가장 좋은 값을 찾는 Trial&Error 방법
+2. Dataset을 Train, val, test 로 나누어 한번도 보지 못한 data에 대해 분류를 잘 하게 되는 하이퍼파라미터를 선정한다.
+3. 다음과 같이 교차 검증(Cross-Validation)을 하면 더 확실하게 분류를 잘 하는 하이퍼파라미터 값을 찾을 수 있지만, 데이터가 작을 때는 괜찮지만 데이터가 많을 경우 너무 오래 걸린다는 단점이 있다.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/1922a07f-14d8-41ba-8dc1-ea5cfe59c848/Untitled.png)
+
+> **이미지 분류에서 잘 사용하지 않는 이유**
+> 
+1. test를 하는데 시간이 너무 오래 걸린다.
+2. 이미지 데이터에 Distance Metric(L1, L2)는 매우 비합리적인 방식이다.
+    - 벡터 간의 거리 측정 관련 함수(L1,L2)들은 이미지들 간의 ‘시각적 유사성’을 측정하는 척도로 적절하지 않다.
+    - 다음 이미지들 간 L2 distance를 측정했을 때 모두 같다.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/aab0547b-1ae0-46f2-b448-7ba91d94cf3a/Untitled.png)
+
+## 4.Linear Classification
+
+<aside>
+🦈 Linear Classification
+: Neural Network를 구성하는 가장 기본적인 요소이다. NN은 여러 개의 다양한 층들을 마치 레고블럭처럼 쌓아 하나의 거대한 타워를 짓는 것이라고 볼 수 있다.
+
+</aside>
+
+> ****Linear Classification 과정****
+> 
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/c4b9f736-1fc9-4cad-a78a-32cebcb5b2d7/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/3ee9d6bc-ae20-45a9-aa9a-c86fb12a1fdf/Untitled.png)
+
+X : input image
+
+W : 가중치(Weight)
+
+b : 바이어스, 곱을 끝내고 더하는 역할로 데이터에 무관하게 특정 클래스에 우선권을 부여한다.(scaling offset) → 만약, 데이터셋에 고양이만 엄청 많고 개는 엄청 적으면 당연히 어떤 사진을 봤을 때 그게 고양이일 확률이 더 크다. 그러므로 bias 값을 고양이에 더 크게 부과해 주어, '고양이' 점수에 보너스를 주는 것이다.
+
+- f(x,W) = Wx + b는 Linear Classification이다.
+- 이미지 데이터와 가중치 값을 더해 각 10개의 class에 대한 score를 나타낸다.
+- train을 시키며 W에 적절한 가중치 값을 모아준다.
+- 이 학습된 가중치를 이용해 낮은 성능의 기기에서도 새로운 데이터에 대한 predict를 빠르게 진행할 수 있다.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/c4932e9c-1c36-46c0-a0ab-e4db40710d34/Untitled.png)
+
+> ****Linear Classification 한계****
+> 
+- **공간 정보를 활용할 수 없다는 단점을 극복하지 못한 것입니다.**
+
+![img1.daumcdn.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/9dfb4a02-093a-4967-b0d0-621896377d7e/img1.daumcdn.png)
+
+아직도 픽셀값들의 계산만으로 의존하여 컬러에만 너무 민감한 모델이다.
+
+위 슬라이드에 dog를 보면 갈색이지만 개의 형태는 잘 보이지 않는다.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/29798440-0cd5-4626-93b6-1db5c884872e/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/cdbf9ab8-5ffb-45ca-85d8-0c7afc66e645/Untitled.png)
+
+이미지를 Score function을 이용하여 Score로 만들었고, 앞으로 해야될 것은 loss function을 이용하여 Score를 loss로 만들어야 한다.
+
+→ loss function: 손실 함수는 데이터를 토대로 산출한 모델의 예측 값과 실제 값과의 차이를 표현하는 지표
+
+## 2. Loss fn, Optimization
+
+<aside>
+🦈 **1. Multiclass SVM loss**
+
+</aside>
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/869ee37b-8f15-4070-b79c-2eb883931db0/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/3bd01b5f-2453-422a-afff-0be53a5abd6e/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/a139627f-c16f-470c-8e9c-e40f17f344ac/Untitled.png)
+
+x = image single column vector
+
+y = label을 나타내는 integer 값
+
+W = parameter
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/8157f647-cf39-49aa-a19a-c844c4b4aee0/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/25667aa5-0d4e-486f-a482-d51989a3b6fa/Untitled.png)
+
+Data Loss : 학습용 데이터들에 최대한 최적화되도록 함
+
+Regularization Loss : 테스트 데이터들에 최대한 최적화되도록 
+
+<aside>
+🦈 2. Softmax (Multinomial Logistic Regression)- Cross entropy loss
+
+</aside>
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/e7a2d87b-9940-4707-a8e8-20b0b5681598/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/11fefa30-47de-418d-9b64-6d3deb8153bb/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/e1e15616-138a-4025-aba7-594c67e7b0c7/Untitled.png)
+
+<aside>
+🦈 3. **Optimization
+:** Loss를 minimize하는 weight를 찾아가는 과정
+
+</aside>
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/878c0d64-8be4-4d3f-8236-8ea246dfa01a/Untitled.png)
+
+→ W값을 바꿔가면서, 최적의 loss값을 찾는 것→ bad solutin
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/3a466b3d-14e3-4ea0-a302-efa354978522/Untitled.png)
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/b40d54c3-e5f9-4a7a-b5d1-69215fbec041/Untitled.png)
+
+0.0001이라는, 아주 적은 수를 W의 첫 번째 원소에 더해보니, Loss가 줄었고 '미분'을 해보니, 기울기가 -2.5가 나왔다
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/1ec44f2b-8148-4573-9c06-aa7a1c7b9d9d/Untitled.png)
+
+loss가 커졌고, 미분을 해보니 기울기 값이 양수인것을 알 수 있다.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/71e43042-6b5e-4708-a658-ef7aa854e132/Untitled.png)
+
+→ 단점: 근사치, 평가 속도가 느림
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/5c3d44fa-5a0f-4545-bf1b-92e94f589eba/Untitled.png)
+
+numerical: f(x+h)-f(x) / h를 한 것, 쓰기 쉽다, 근사치이고 느리다
+
+analytic: 미분 공식으로 나온 것, 정확하고 빠르다, 에러가 많다
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/ce4b5829-4a0d-4045-bd9f-8c64c88b2738/Untitled.png)
+
+step_size = learning rate
+
+gradient 값만큼 learning rate를 감소시켜야 하기 때문에(-)를 곱함
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/1f51bf11-dc47-4efa-9d1d-612b472877a0/Untitled.png)
+
+- training set의 일부만을 활용하여 gradient를 계산하고 parameter를 업데이트
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/ac90e89d-d931-47d8-87d8-f44362b72eeb/27e165eb-1d35-4338-a6d6-8df6d9a346a4/Untitled.png)
+
+단기적으로 노이즈가 많지만 장기적으로 loss가 감소함
+
+## Summary
+
+!https://velog.velcdn.com/images%2Fcha-suyeon%2Fpost%2F7b5ea163-dd3c-4ed9-a5a9-74e536656117%2Fimage.png
+
+(*x*,*y*)라는 고정된 데이터 쌍이 있을 때, 처음에 무작위로 뽑은 parameter 값으로 바뀌어 나간다.
+
+왼쪽에서 오른쪽으로 이동하면서 score function은 각 class의 score를 계산하고, 그 값이 f 벡터에 저장된다.
+
+loss function은 `data loss`와 `regularization loss`로 나뉘어져 있습니다. Gradient descent 과정에서 parameter로 미분한 gradient를 계산하고 이를 이용해 parameter를 업데이트한다.
+
+- loss function은 산 꼭대기에서 아래로 내려가는 것으로 최적화 과정을 설명했다. 특히 SVM loss 의 경우
+
+!https://velog.velcdn.com/images%2Fcha-suyeon%2Fpost%2F6041f982-88e1-48ae-ba30-f3744fc13c14%2Fimage.png
+
+loss function은 선형의 모양으로 가장 좋은 parameter 값인 파란색으로 이동해야 하는 경우였다.
+
+- loss function을 optimize한다는 것은 무작위로 시작해서 반복하며 더 나은쪽으로 이동한다는 핵심 개념에서 시작되었다.
+- gradient(기울기)는 그 함수값이 감소하는 가장 빠른 방향이다. 이것을 유한 차분(finite difference, 즉 미분할 때 h의 값이 유한하다는 의미)를 이용하여 단순 무식하게 수치적으로 어림잡아 계산하는 방법도 살펴 보았다.
+    - 강의에서는 이러한 수치적 미분보다 해석적 미분이 더 좋다고 언급하였다.
+- parameter *w*를 업데이트할 때, 한 번에 얼마나 움직여야 하는지를 결정하는 것이 `step size(learning rate, lr)`이었다. 학습 속도에 영향을 주는 hyper parameter이다.
+    - 이 값이 너무 낮으면 너무 느려지고, 너무 높으면 빨라지지만 위험한 점이 있다.
+- 수치적 미분과 해석적 미분의 방법
+    - 수치적 gradinet: 단순하지만 근사값이고 비효율적임
+    - 해석적 gradient: 정확하고 빠르지만 손으로 계산해서 실수할 수 있음
+    - 실제 응용에서는 해석적인 gradient을 씁니다. 또한, 둘 다 구한 다음 비교해보고, 틀린 경우 고치는 gradient check 과정을 갖다.
+- 반복적으로 루프(loop)를 돌려서 gradient를 계산하고 parameter를 업데이트하는 Gradient Descent 알고리즘을 소개했다.
