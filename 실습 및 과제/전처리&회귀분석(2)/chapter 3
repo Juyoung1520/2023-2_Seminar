@@ -1,0 +1,2249 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "3WjyBsOwXIHF"
+   },
+   "source": [
+    "\n",
+    "# Section 01. 조건문\n",
+    "\n",
+    "## 1 if 문의 원리"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 95,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "executionInfo": {
+     "elapsed": 6,
+     "status": "ok",
+     "timestamp": 1684388306291,
+     "user": {
+      "displayName": "꾬은주",
+      "userId": "05623544279730996499"
+     },
+     "user_tz": -540
+    },
+    "id": "XtZmxBlZXbW_",
+    "outputId": "14290f49-8520-4372-e1a4-6257e22800da"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "짝수\n"
+     ]
+    }
+   ],
+   "source": [
+    "a=4\n",
+    "if a %2==0:\n",
+    "  print(\"짝수\")\n",
+    "else:\n",
+    "  print(\"홀수\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 96,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/",
+     "height": 35
+    },
+    "executionInfo": {
+     "elapsed": 329,
+     "status": "ok",
+     "timestamp": 1684388315084,
+     "user": {
+      "displayName": "꾬은주",
+      "userId": "05623544279730996499"
+     },
+     "user_tz": -540
+    },
+    "id": "l_wTwKQSXdtA",
+    "outputId": "f3085970-5fe1-416b-bdb2-b080ea57b9bd"
+   },
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'짝수'"
+      ]
+     },
+     "execution_count": 96,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "a=4\n",
+    "parity=\"짝수\" if a %2==0 else \"홀수\"\n",
+    "parity"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "qQF6kwqeXkbM"
+   },
+   "source": [
+    "## 2. if 문의 사용"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 97,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "executionInfo": {
+     "elapsed": 11,
+     "status": "ok",
+     "timestamp": 1684388357276,
+     "user": {
+      "displayName": "꾬은주",
+      "userId": "05623544279730996499"
+     },
+     "user_tz": -540
+    },
+    "id": "JcD8OeiIXiWD",
+    "outputId": "a5a4d950-74e7-4e36-83c5-47bf7c795c2c"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "낮은 가격\n"
+     ]
+    }
+   ],
+   "source": [
+    "price=800\n",
+    "if price==900:\n",
+    "  print('적정 가격')\n",
+    "elif price>900:\n",
+    "  print('비싼 가격')\n",
+    "else:\n",
+    "  print('낮은 가격')  "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 98,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "executionInfo": {
+     "elapsed": 339,
+     "status": "ok",
+     "timestamp": 1684388384463,
+     "user": {
+      "displayName": "꾬은주",
+      "userId": "05623544279730996499"
+     },
+     "user_tz": -540
+    },
+    "id": "ZXyftI2rXsBC",
+    "outputId": "3bc5be22-1efe-4f3b-da60-5d1615fba240"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "profit_change는 0.11 , fee는 0.010000\n",
+      "buy stock : 순수익률은 0.10\n"
+     ]
+    }
+   ],
+   "source": [
+    "current_price=900\n",
+    "predict_price=1000\n",
+    "fee=0.01\n",
+    "\n",
+    "profit_change=(predict_price-current_price)/current_price\n",
+    "\n",
+    "if profit_change>fee:\n",
+    "  print(\"profit_change는 %.2f , fee는 %f\"%(profit_change, fee))\n",
+    "  print(\"buy stock : 순수익률은 %.2f\"%(profit_change-fee))\n",
+    "elif profit_change<-fee:\n",
+    "  print(\"sell stock : 수익률은 %.2f, 수수료는 %f\"%(profit_change, fee))\n",
+    "else:\n",
+    "  print(profit_change,\"hold stock\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 99,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "executionInfo": {
+     "elapsed": 7,
+     "status": "ok",
+     "timestamp": 1684388402579,
+     "user": {
+      "displayName": "꾬은주",
+      "userId": "05623544279730996499"
+     },
+     "user_tz": -540
+    },
+    "id": "HCzT8AucXxva",
+    "outputId": "b8f4d1db-3b64-4c90-b664-642b7c7f5e5b"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "profit_change 0.11, fee 0.01 매수 혹은 매도 상황\n"
+     ]
+    }
+   ],
+   "source": [
+    "current_price=900\n",
+    "predict_price=1000\n",
+    "fee=0.01\n",
+    "\n",
+    "profit_change=(predict_price-current_price)/current_price\n",
+    "\n",
+    "if -fee<profit_change or profit_change<fee:\n",
+    "  print(\"profit_change %.2f, fee %.2f 매수 혹은 매도 상황\"%(profit_change, fee))\n",
+    "else:\n",
+    "  print(\"%f, 보유\"%(profit_change-fee))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 100,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "executionInfo": {
+     "elapsed": 5,
+     "status": "ok",
+     "timestamp": 1684388425135,
+     "user": {
+      "displayName": "꾬은주",
+      "userId": "05623544279730996499"
+     },
+     "user_tz": -540
+    },
+    "id": "rcwsX0jWX3FG",
+    "outputId": "016d2c85-66ac-43bd-e2af-76d8e359a8b5"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "매수 혹은 매도 상황\n"
+     ]
+    }
+   ],
+   "source": [
+    "fee=0.01\n",
+    "profit_change=-0.02\n",
+    "\n",
+    "if -fee<profit_change and profit_change<fee:\n",
+    "  print(\"profit_change %f, fee %f 보유\"%(profit_change, fee))\n",
+    "else:\n",
+    "  print(\"매수 혹은 매도 상황\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 101,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "executionInfo": {
+     "elapsed": 4,
+     "status": "ok",
+     "timestamp": 1684388444654,
+     "user": {
+      "displayName": "꾬은주",
+      "userId": "05623544279730996499"
+     },
+     "user_tz": -540
+    },
+    "id": "2GMqD0CsX72r",
+    "outputId": "1c9d9949-cd58-46fb-ddc1-6ddcb48384dd"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "buy stock: 수익률은 0.19\n"
+     ]
+    }
+   ],
+   "source": [
+    "profit_change=0.2\n",
+    "if -fee<profit_change and profit_change<fee:\n",
+    "  print(\"profit_change %f, fee%f 보유\"%(profit_change,fee))\n",
+    "elif profit_change>fee:\n",
+    "  print(\"buy stock: 수익률은 %.2f\"%(profit_change-fee))\n",
+    "else:\n",
+    "  print(\"sell stock: 수익률은 %.2f, 수수료는 %.2f\"%(profit_change,fee))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 102,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "executionInfo": {
+     "elapsed": 8,
+     "status": "ok",
+     "timestamp": 1684388471311,
+     "user": {
+      "displayName": "꾬은주",
+      "userId": "05623544279730996499"
+     },
+     "user_tz": -540
+    },
+    "id": "wJaeaWPtYCEJ",
+    "outputId": "0d30337c-eb4a-458c-87de-f92aa7b855de"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1등급 제품\n"
+     ]
+    }
+   ],
+   "source": [
+    "price=4200\n",
+    "if price<1000:\n",
+    "  print(\"5등급 제품\")\n",
+    "if price>=1000 and price<2000:\n",
+    "  print(\"4등급 제품\")\n",
+    "elif price>=2000 and price<3000:\n",
+    "  print(\"3등급 제품\")\n",
+    "elif price>=3000 and price<4000:\n",
+    "  print(\"2등급 제품\")\n",
+    "else:\n",
+    "  print(\"1등급 제품\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Section 02. 반복문\n",
+    "## 1. for 문의 원리"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 103,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0 는(은) 4의 배수로 10보다 작다.\n",
+      "4 는(은) 4의 배수로 10보다 작다.\n",
+      "8 는(은) 4의 배수로 10보다 작다.\n"
+     ]
+    }
+   ],
+   "source": [
+    "for x in range(0, 10, 4):\n",
+    "  print(x,\"는(은) 4의 배수로 10보다 작다.\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2. For문의 사용"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 104,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2*1=2\n",
+      "2*2=4\n",
+      "2*3=6\n",
+      "2*4=8\n",
+      "2*5=10\n",
+      "2*6=12\n",
+      "2*7=14\n",
+      "2*8=16\n",
+      "2*9=18\n",
+      "3*1=3\n",
+      "3*2=6\n",
+      "3*3=9\n",
+      "3*4=12\n",
+      "3*5=15\n",
+      "3*6=18\n",
+      "3*7=21\n",
+      "3*8=24\n",
+      "3*9=27\n",
+      "4*1=4\n",
+      "4*2=8\n",
+      "4*3=12\n",
+      "4*4=16\n",
+      "4*5=20\n",
+      "4*6=24\n",
+      "4*7=28\n",
+      "4*8=32\n",
+      "4*9=36\n",
+      "5*1=5\n",
+      "5*2=10\n",
+      "5*3=15\n",
+      "5*4=20\n",
+      "5*5=25\n",
+      "5*6=30\n",
+      "5*7=35\n",
+      "5*8=40\n",
+      "5*9=45\n",
+      "6*1=6\n",
+      "6*2=12\n",
+      "6*3=18\n",
+      "6*4=24\n",
+      "6*5=30\n",
+      "6*6=36\n",
+      "6*7=42\n",
+      "6*8=48\n",
+      "6*9=54\n",
+      "7*1=7\n",
+      "7*2=14\n",
+      "7*3=21\n",
+      "7*4=28\n",
+      "7*5=35\n",
+      "7*6=42\n",
+      "7*7=49\n",
+      "7*8=56\n",
+      "7*9=63\n",
+      "8*1=8\n",
+      "8*2=16\n",
+      "8*3=24\n",
+      "8*4=32\n",
+      "8*5=40\n",
+      "8*6=48\n",
+      "8*7=56\n",
+      "8*8=64\n",
+      "8*9=72\n",
+      "9*1=9\n",
+      "9*2=18\n",
+      "9*3=27\n",
+      "9*4=36\n",
+      "9*5=45\n",
+      "9*6=54\n",
+      "9*7=63\n",
+      "9*8=72\n",
+      "9*9=81\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(2, 10):\n",
+    "  for j in range(1, 10):\n",
+    "    print(\"%d*%d=%d\"%(i, j, i*j))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 105,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "1\n",
+      "2\n"
+     ]
+    }
+   ],
+   "source": [
+    "for i in range(10):\n",
+    "  if i==3:\n",
+    "    break\n",
+    "  print(i)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### continue 문을 통해 for 문의 처음으로 돌아가게 할 수 있다. 앞서 break 문으로 i가 3이 되면 반복문 밖으로 빠져나오게 했다."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 106,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "1\n",
+      "2\n",
+      "4\n",
+      "5\n",
+      "6\n"
+     ]
+    }
+   ],
+   "source": [
+    "for x in range(10):\n",
+    "  if x==3:\n",
+    "    continue\n",
+    "  if x==7:\n",
+    "    break\n",
+    "  print(x)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 107,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Sonata\n",
+      "TESLA\n",
+      "Avante\n",
+      "Lexus\n"
+     ]
+    }
+   ],
+   "source": [
+    "cars=['sonata', 'tesla', 'avante', 'lexus']\n",
+    "for i in cars:\n",
+    "  if i=='tesla':\n",
+    "    print(i.upper( ))\n",
+    "  else:\n",
+    "    print(i.title( ))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 108,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "ss\n",
+      "lg\n",
+      "sk\n",
+      "naver\n"
+     ]
+    }
+   ],
+   "source": [
+    "my_stocks={'ss': 10, 'lg': 5, 'sk': 5, 'naver': 20}\n",
+    "for i in my_stocks:\n",
+    "  print(i)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3. for 문의 활용: 음식 주문 프로세스 구현"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 109,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "된장찌개 주문합니다.\n",
+      "김치찌개 주문합니다.\n",
+      "\n",
+      "죄송합니다. 저희는 해물찜이 없습니다.\n"
+     ]
+    }
+   ],
+   "source": [
+    "menus=['된장찌개', '삼겹살', '설렁탕', '냉면', '칼국수', '김치찌개']\n",
+    "requests=['된장찌개', '김치찌개', '해물찜']\n",
+    "\n",
+    "for item in requests:\n",
+    "  if item in menus:\n",
+    "    print(f\"{item} 주문합니다.\")\n",
+    "  else:\n",
+    "    print(f\"\\n죄송합니다. 저희는 {item}이 없습니다.\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 110,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "ready=[]\n",
+    "ready.append('된장찌개')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 111,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "된장찌개 주문합니다.\n",
+      "['된장찌개'] 준비해주세요.\n",
+      "김치찌개 주문합니다.\n",
+      "['된장찌개', '김치찌개'] 준비해주세요.\n",
+      "\n",
+      "죄송합니다. 저희는 해물찜이 없습니다.\n",
+      "\n",
+      "이제 ['된장찌개', '김치찌개'] 음식을 준비하겠습니다.\n"
+     ]
+    }
+   ],
+   "source": [
+    "menus=['된장찌개', '삼겹살', '설렁탕', '냉면', '칼국수', '김치찌개']\n",
+    "requests=['된장찌개', '김치찌개', '해물찜']\n",
+    "ready=[]\n",
+    "\n",
+    "for item in requests:\n",
+    "  if item in menus:\n",
+    "    print(f\"{item} 주문합니다.\")\n",
+    "    ready.append(item)\n",
+    "    print(f\"{ready} 준비해주세요.\")\n",
+    "  else:\n",
+    "    print(f\"\\n죄송합니다. 저희는 {item}이 없습니다.\")\n",
+    "print(f\"\\n이제 {ready} 음식을 준비하겠습니다.\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 5. while 문의 사용\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 112,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "1\n",
+      "2\n",
+      "3\n",
+      "4\n"
+     ]
+    }
+   ],
+   "source": [
+    "i=0\n",
+    "while i<5:\n",
+    "  print (i)\n",
+    "  i+=1 # i=i+1과 같은 의미"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 113,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "1 1\n",
+      "2 3\n",
+      "3 6\n",
+      "4 10\n",
+      "5 15\n",
+      "5 15\n"
+     ]
+    }
+   ],
+   "source": [
+    "i=0\n",
+    "total=0\n",
+    "while i<5:\n",
+    "  i=i+1\n",
+    "  total+=i\n",
+    "  print(i, total) # 반복문 안이므로 i와 total 변수의 결과를 반복 출력\n",
+    "print(i, total) # 반복문 밖이므로 i와 total 변수의 최종 결과만 출력"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 114,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "10\n",
+      "20\n",
+      "30\n",
+      "40\n",
+      "50\n",
+      "60\n",
+      "70\n",
+      "80\n",
+      "90\n",
+      "100 550\n"
+     ]
+    }
+   ],
+   "source": [
+    "i=0\n",
+    "total=0\n",
+    "while i<100:\n",
+    "  print(i)\n",
+    "  i+=10\n",
+    "  total+=i\n",
+    "print(i, total)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 115,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "10\n",
+      "20\n",
+      "30\n",
+      "40\n",
+      "50\n",
+      "60\n",
+      "70\n",
+      "80\n",
+      "90\n",
+      "100\n",
+      "100 550\n"
+     ]
+    }
+   ],
+   "source": [
+    "i=0\n",
+    "total=0\n",
+    "for i in range(0, 101, 10):\n",
+    "  print(i)\n",
+    "  total+=i\n",
+    "print(i, total)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 116,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0\n",
+      "비가 오니 등산 안 한다.\n",
+      "1\n",
+      "눈이 오니 등산 안 한다.\n",
+      "2\n",
+      "good 날씨이니 등산한다.\n",
+      "good 날씨이니 등산한다.\n",
+      "3\n",
+      "비가 오니 등산 안 한다.\n",
+      "4\n",
+      "눈이 오니 등산 안 한다.\n",
+      "5\n",
+      "good 날씨이니 등산한다.\n",
+      "good 날씨이니 등산한다.\n",
+      "6\n",
+      "비가 오니 등산 안 한다.\n",
+      "7\n",
+      "눈이 오니 등산 안 한다.\n",
+      "8\n",
+      "good 날씨이니 등산한다.\n",
+      "good 날씨이니 등산한다.\n",
+      "9\n",
+      "비가 오니 등산 안 한다.\n"
+     ]
+    }
+   ],
+   "source": [
+    "i=0\n",
+    "weather=['rain', 'snow', 'good']\n",
+    "while i<10:\n",
+    "  print(i)\n",
+    "  if weather[i%3]=='rain':\n",
+    "    print('비가 오니 등산 안 한다.')\n",
+    "  elif weather[i%3]=='snow':\n",
+    "    print('눈이 오니 등산 안 한다.')\n",
+    "  else:\n",
+    "    print(\"%s 날씨이니 등산한다.\"%weather[i%3])\n",
+    "    print(f\"{weather[i%3]} 날씨이니 등산한다.\")\n",
+    "  i=i+1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Section 03. 컴프리헨션\n",
+    "### - 특정 규칙을 이용해 데이터형 자료를 좀 더 쉽고 간결하게 담는 방법이다."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 117,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[0, 2, 4, 6, 8]"
+      ]
+     },
+     "execution_count": 117,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# 일반 리스트 생성\n",
+    "even_numbers=[0, 2, 4, 6, 8]\n",
+    "even_numbers"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 118,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[0, 1, 4, 9, 16]"
+      ]
+     },
+     "execution_count": 118,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# 컴프리헨션을 이용한 리스트 생성\n",
+    "squares=[x * x for x in range(5)]\n",
+    "squares"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 119,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[0, 4, 16, 36, 64]"
+      ]
+     },
+     "execution_count": 119,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# 짝수의 제곱을 원소로 가지는 리스트 컴프리헨션\n",
+    "even_squares=[x * x for x in even_numbers]\n",
+    "even_squares"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 120,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[0, 0, 0, 0, 0]"
+      ]
+     },
+     "execution_count": 120,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# 주어진 크기의 원소를 가지는 리스트 컴프리헨션\n",
+    "zeros=[0 for _ in even_numbers] #불필요한 값은 언더바로 표시하는 리스트\n",
+    "zeros"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "for문을 사용해 0부터 9까지의 값을 먼저 할당하고, if 문을 사용해 이 값을 2로 나눈 나머지가 0인 값만 x에 할당해 0에서 9까지 짝수로만 이루어진 리스트를 생성 가능"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 121,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[0, 2, 4, 6, 8]"
+      ]
+     },
+     "execution_count": 121,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# 0에서 9까지의 짝수를 원소로 가지는 리스트 컴프리헨션\n",
+    "even_numbers=[x for x in range(10) if x % 2==0]\n",
+    "even_numbers"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 122,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[2, 4, 6, 8, 10, 12, 14, 16, 18, 3, 6, 9, 12, 15, 18, 21, 24, 27, 4, 8, 12, 16, 20, 24, 28, 32, 36, 5, 10, 15, 20, 25, 30, 35, 40, 45, 6, 12, 18, 24, 30, 36, 42, 48, 54, 7, 14, 21, 28, 35, 42, 49, 56, 63, 8, 16, 24, 32, 40, 48, 56, 64, 72, 9, 18, 27, 36, 45, 54, 63, 72, 81]\n"
+     ]
+    }
+   ],
+   "source": [
+    "# 구구단 리스트 컴프리헨션 1\n",
+    "pairs=[i*j for i in range(2, 10) for j in range(1, 10)]\n",
+    "print(pairs)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 123,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[2, 4, 6, 8, 10, 12, 14, 16, 18]"
+      ]
+     },
+     "execution_count": 123,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# 2단 리스트 컴프리헨션\n",
+    "googoo=[]\n",
+    "for i in range(2, 10) :\n",
+    "  for j in range(1, 10) :\n",
+    "    googoo.append(i * j)\n",
+    "googoo=[i*j for i in range(2, 10) for j in range(1, 10)]\n",
+    "googoo[:9]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 124,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2 * 1=2\n",
+      "2 * 2=4\n",
+      "2 * 3=6\n",
+      "2 * 4=8\n",
+      "2 * 5=10\n",
+      "2 * 6=12\n",
+      "2 * 7=14\n",
+      "2 * 8=16\n",
+      "2 * 9=18\n",
+      "3 * 1=3\n",
+      "3 * 2=6\n",
+      "3 * 3=9\n",
+      "3 * 4=12\n",
+      "3 * 5=15\n",
+      "3 * 6=18\n",
+      "3 * 7=21\n",
+      "3 * 8=24\n",
+      "3 * 9=27\n",
+      "4 * 1=4\n",
+      "4 * 2=8\n",
+      "4 * 3=12\n",
+      "4 * 4=16\n",
+      "4 * 5=20\n",
+      "4 * 6=24\n",
+      "4 * 7=28\n",
+      "4 * 8=32\n",
+      "4 * 9=36\n",
+      "5 * 1=5\n",
+      "5 * 2=10\n",
+      "5 * 3=15\n",
+      "5 * 4=20\n",
+      "5 * 5=25\n",
+      "5 * 6=30\n",
+      "5 * 7=35\n",
+      "5 * 8=40\n",
+      "5 * 9=45\n",
+      "6 * 1=6\n",
+      "6 * 2=12\n",
+      "6 * 3=18\n",
+      "6 * 4=24\n",
+      "6 * 5=30\n",
+      "6 * 6=36\n",
+      "6 * 7=42\n",
+      "6 * 8=48\n",
+      "6 * 9=54\n",
+      "7 * 1=7\n",
+      "7 * 2=14\n",
+      "7 * 3=21\n",
+      "7 * 4=28\n",
+      "7 * 5=35\n",
+      "7 * 6=42\n",
+      "7 * 7=49\n",
+      "7 * 8=56\n",
+      "7 * 9=63\n",
+      "8 * 1=8\n",
+      "8 * 2=16\n",
+      "8 * 3=24\n",
+      "8 * 4=32\n",
+      "8 * 5=40\n",
+      "8 * 6=48\n",
+      "8 * 7=56\n",
+      "8 * 8=64\n",
+      "8 * 9=72\n",
+      "9 * 1=9\n",
+      "9 * 2=18\n",
+      "9 * 3=27\n",
+      "9 * 4=36\n",
+      "9 * 5=45\n",
+      "9 * 6=54\n",
+      "9 * 7=63\n",
+      "9 * 8=72\n",
+      "9 * 9=81\n"
+     ]
+    }
+   ],
+   "source": [
+    "# 구구단 리스트 컴프리헨션 2\n",
+    "for i in range(2, 10) :\n",
+    "  for j in range(1, 10) :\n",
+    "    print(\"{} * {}={}\".format(i, j, googoo[(j-1)+((i-2)*9)]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 125,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[(2, 1),\n",
+       " (2, 2),\n",
+       " (2, 3),\n",
+       " (2, 4),\n",
+       " (2, 5),\n",
+       " (2, 6),\n",
+       " (2, 7),\n",
+       " (2, 8),\n",
+       " (2, 9),\n",
+       " (3, 1),\n",
+       " (3, 2),\n",
+       " (3, 3),\n",
+       " (3, 4),\n",
+       " (3, 5),\n",
+       " (3, 6),\n",
+       " (3, 7),\n",
+       " (3, 8),\n",
+       " (3, 9),\n",
+       " (4, 1),\n",
+       " (4, 2),\n",
+       " (4, 3),\n",
+       " (4, 4),\n",
+       " (4, 5),\n",
+       " (4, 6),\n",
+       " (4, 7),\n",
+       " (4, 8),\n",
+       " (4, 9),\n",
+       " (5, 1),\n",
+       " (5, 2),\n",
+       " (5, 3),\n",
+       " (5, 4),\n",
+       " (5, 5),\n",
+       " (5, 6),\n",
+       " (5, 7),\n",
+       " (5, 8),\n",
+       " (5, 9),\n",
+       " (6, 1),\n",
+       " (6, 2),\n",
+       " (6, 3),\n",
+       " (6, 4),\n",
+       " (6, 5),\n",
+       " (6, 6),\n",
+       " (6, 7),\n",
+       " (6, 8),\n",
+       " (6, 9),\n",
+       " (7, 1),\n",
+       " (7, 2),\n",
+       " (7, 3),\n",
+       " (7, 4),\n",
+       " (7, 5),\n",
+       " (7, 6),\n",
+       " (7, 7),\n",
+       " (7, 8),\n",
+       " (7, 9),\n",
+       " (8, 1),\n",
+       " (8, 2),\n",
+       " (8, 3),\n",
+       " (8, 4),\n",
+       " (8, 5),\n",
+       " (8, 6),\n",
+       " (8, 7),\n",
+       " (8, 8),\n",
+       " (8, 9),\n",
+       " (9, 1),\n",
+       " (9, 2),\n",
+       " (9, 3),\n",
+       " (9, 4),\n",
+       " (9, 5),\n",
+       " (9, 6),\n",
+       " (9, 7),\n",
+       " (9, 8),\n",
+       " (9, 9)]"
+      ]
+     },
+     "execution_count": 125,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# 구구단 리스트 컴프리헨션 3\n",
+    "increasing_pairs=[(x, y)\n",
+    "  for x in range(10)\n",
+    "  for y in range(x+1, 10)]\n",
+    "increasing_pairs\n",
+    "googoo=[(x, y) for x in range(2, 10) for y in range(1, 10)]\n",
+    "googoo"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 126,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{0: 0, 1: 1, 2: 4, 3: 9, 4: 16}"
+      ]
+     },
+     "execution_count": 126,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# 딕셔너리 컴프리헨션\n",
+    "square_dict={i: i * i for i in range(5)}\n",
+    "square_dict\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 127,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{1, 4}"
+      ]
+     },
+     "execution_count": 127,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# 집합 컴프리헨션\n",
+    "square_set={i * i for i in [1, -1, 2]}\n",
+    "square_set"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 128,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'ss': 1000, 'lg': 500, 'sk': 500, 'naver': 2000}"
+      ]
+     },
+     "execution_count": 128,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "my_stocks={'ss': 10, 'lg': 5, 'sk': 5,\n",
+    "'naver': 20}\n",
+    "my_stocks1={k: v * 100 for (k, v) in my_stocks.items()}\n",
+    "my_stocks1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Section 04. 함수\n",
+    "## 1. 함수의 개념과 유형"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 129,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "3\n"
+     ]
+    }
+   ],
+   "source": [
+    "def add(a, b):\n",
+    "  return a+b\n",
+    "  \n",
+    "print(add(1, 2))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 130,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "덧셈 기능입니다\n"
+     ]
+    }
+   ],
+   "source": [
+    "def add( ):\n",
+    "  print(\"덧셈 기능입니다\")\n",
+    "add( )"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 131,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(3, 5)"
+      ]
+     },
+     "execution_count": 131,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "def add( ): \n",
+    "  return 3, 5\n",
+    "add( ) # add(  ) 형태로 변수에 반환값 저장"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 132,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def add(a, b):\n",
+    "  a+b\n",
+    "add(2, 3) # 반환값이 없으므로 출력값 없음"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 133,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "15"
+      ]
+     },
+     "execution_count": 133,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "def add(x, y): \n",
+    "  return x + y\n",
+    "add(5, 10) # 함수 자체를 변수에 할당"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 2. 람다 함수\n",
+    "- 람다 함수는 익명 함수로, 함수와 같이 동작해야 하는 코드를 정의할 떄 사용한다. 함수를 간결하게 사용하고 싶을 때 정의하면 된다.\n",
+    "- (lambda 인자: 반환값 또는 수식)(인자)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 134,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "10"
+      ]
+     },
+     "execution_count": 134,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "(lambda x: x*2)(5)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 135,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "15"
+      ]
+     },
+     "execution_count": 135,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "def sum1(x, y):\n",
+    "  return x + y\n",
+    "sum1(5, 10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 136,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "15"
+      ]
+     },
+     "execution_count": 136,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "(lambda x, y: x+y)(5, 10)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 3. 데이터 분석에 유용한 외장 함수\n",
+    "- 크게 외장함수와 내장함수로 구별 되는데, 외장 함수를 사용하기 위해서는 이 함수들이 포함된 패키지를 먼저 임포트 해야 하고 내장함수는 그냥 사용가능\n",
+    "### defaultdict 함수 \n",
+    "- 데이터형의 기본값을 만들어주는 함수\n",
+    "- 예를 들어 딕셔너리의 키가 존재하지 않으면 KeyError가 출력되지만 defaultdict 함수를 이용하면 키의 존재여부를 몰라도 기본값을 설정할 수 있어 KeyError 발생 안함.\n",
+    "- 데이터가 적을 때는 기본값을 매번 지정할 수 있지만, 데이터가 많아지면 defaultdict 함수가 유용"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 137,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "defaultdict(int, {})"
+      ]
+     },
+     "execution_count": 137,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# collections 패키지에 있는 defaultdict 함수를 임포트\n",
+    "from collections import defaultdict\n",
+    "word_counts=defaultdict(int)\n",
+    "word_counts"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 138,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "defaultdict(int, {'apple': 3, 'banana': 2, 'cherry': 1, 'melon': 1})"
+      ]
+     },
+     "execution_count": 138,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "from collections import defaultdict\n",
+    "fruits=[\"apple\", \"apple\",\"apple\",\"banana\",\"banana\", \"cherry\", \"melon\"]\n",
+    "word_counts=defaultdict(int)\n",
+    "for i in fruits:\n",
+    "  word_counts[i]+=1\n",
+    "word_counts"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 139,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "defaultdict(list, {'key': ['value']})"
+      ]
+     },
+     "execution_count": 139,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "from collections import defaultdict\n",
+    "dd_list=defaultdict(list)\n",
+    "dd_list[\"key\"].append('value')\n",
+    "dd_list"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 140,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "defaultdict(dict, {'Korea': {'Capital': 'Seoul'}})"
+      ]
+     },
+     "execution_count": 140,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "from collections import defaultdict\n",
+    "dd_dict1=defaultdict(dict)\n",
+    "dd_dict1[\"Korea\"][\"Capital\"]=\"Seoul\"\n",
+    "dd_dict1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 141,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "defaultdict(dict, {'Japan': ('Osaka', 'Tokyo')})"
+      ]
+     },
+     "execution_count": 141,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "from collections import defaultdict\n",
+    "dd_dict2=defaultdict(dict)\n",
+    "dd_dict2[\"Japan\"]=\"Osaka\",\"Tokyo\"\n",
+    "dd_dict2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Counter 함수\n",
+    "- 리스트와 같은 열거형 데이터형의 데이터를 키로, 데이터의 개수를 값으로 반환한다.\n",
+    "- 첫 글자를 대문자로 입력필수"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 142,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Counter({0: 2, 1: 1, 2: 1})\n"
+     ]
+    }
+   ],
+   "source": [
+    "from collections import Counter\n",
+    "c=Counter([0, 1, 2, 0])\n",
+    "print(c)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "C1 변수에 counter 함수를 이용해 나열된 리스트의 데이터를 세어본다. C1을 출력해보면 딕셔너리 형태로 데이터를 key로 개수를 value로 반환한다. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 143,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Counter({'apple': 3, 'banana': 2, 'cherry': 1, 'melon': 1})\n"
+     ]
+    }
+   ],
+   "source": [
+    "from collections import Counter\n",
+    "c1=Counter([\"apple\", \"apple\",\"apple\",\"banana\",\"banana\", \"cherry\", \"melon\"])\n",
+    "print(c1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 144,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Counter({'apple': 3, 'banana': 2, 'cherry': 1, 'melon': 1})\n"
+     ]
+    }
+   ],
+   "source": [
+    "from collections import Counter\n",
+    "fruits=[\"apple\", \"apple\",\"apple\",\"banana\",\"banana\", \"cherry\", \"melon\"]\n",
+    "c2=Counter(fruits)\n",
+    "print(c2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 145,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "Counter({'apple': 3, 'banana': 2, 'cherry': 1, 'melon': 1})"
+      ]
+     },
+     "execution_count": 145,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "from collections import Counter\n",
+    "fruits=[\"apple\", \"apple\",\"apple\",\"banana\",\"banana\", \"cherry\", \"melon\"]\n",
+    "\n",
+    "word_counts=Counter(fruits)\n",
+    "word_counts"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "most_common 함수는 빈도수가 높은 단어를 출력해준다. 함수의 인자로는 가장 빈도가 높은 것을 몇개나 표시할 것인지를 나타낸다."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 146,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "apple 3\n",
+      "banana 2\n"
+     ]
+    }
+   ],
+   "source": [
+    "for word, count in word_counts.most_common(2):\n",
+    "  print(word, count)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 4. 데이터 분석에 유용한 내장 함수\n",
+    "### zip 함수\n",
+    "- 같은 개수를 가지는 리스트나 딕셔너리 등의 데이터를 쌍으로 묶어서 표시한다. zip은 같은 순서의 원소들끼리 묶어서 표시하고 출력값은 zip의 인자 순서대로 튜플 형태로 묶어서 내보낸다."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 147,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[('a', 'A'), ('b', 'B'), ('c', 'C'), (1, 4), (2, 5), (3, 6)]"
+      ]
+     },
+     "execution_count": 147,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "list(zip(['a', 'b', 'c', 1, 2, 3], ['A', 'B', 'C', 4, 5, 6]))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 148,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[('a', 1), ('b', 2), ('c', 3)]"
+      ]
+     },
+     "execution_count": 148,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "letters=['a', 'b', 'c']\n",
+    "numbers=[1, 2, 3]\n",
+    "[pair for pair in zip(letters, numbers)]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 149,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[('a', 1), ('b', 2), ('c', 3)]"
+      ]
+     },
+     "execution_count": 149,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "letters=['a', 'b', 'c']\n",
+    "numbers=[1, 2, 3]\n",
+    "[(i, j) for i, j in zip(letters, numbers)]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 150,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[{'a': 1}, {'b': 2}, {'c': 3}]"
+      ]
+     },
+     "execution_count": 150,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "letters=['a', 'b', 'c']\n",
+    "numbers=[1, 2, 3]\n",
+    "pairlist=[{i:j} for i, j in zip(letters, numbers)]\n",
+    "pairlist"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 151,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[5, 7, 9]"
+      ]
+     },
+     "execution_count": 151,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "numbers1=[1, 2, 3]\n",
+    "numbers2=[4, 5, 6]\n",
+    "sumlist=[i + j for i, j in zip(numbers1, numbers2)]\n",
+    "sumlist"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 152,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "12"
+      ]
+     },
+     "execution_count": 152,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "numbers=[1, 2, 3]\n",
+    "sum([i+j for i, j in zip(numbers, numbers)])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 153,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "12"
+      ]
+     },
+     "execution_count": 153,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "numbers=[1, 2, 3]\n",
+    "sumlist=[i+j for i, j in zip(numbers, numbers)]\n",
+    "sum(sumlist) # sumlist = [2, 4, 6]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "*을 이용해 언패킹하여 묶어진 값들을 풀어서 나타내는 것이다. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 154,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(('a', 'b', 'c'), (1, 2, 3))"
+      ]
+     },
+     "execution_count": 154,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "pairlist=[('a', 1), ('b', 2), ('c', 3)]\n",
+    "letters, numbers=zip(*pairlist)\n",
+    "letters, numbers"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 155,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(('a', 'b', 'c'), (1, 2, 3))"
+      ]
+     },
+     "execution_count": 155,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "letters, numbers=zip(('a', 1), ('b', 2), ('c', 3))\n",
+    "letters, numbers"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### enumerate 함수\n",
+    "- 순서가 있는 데이터형(리스트, 튜플, 문자형)을 입력받아 열거하여 순서가 있는 데이터형을 객체로 만들 때 사용한다. 특히 for 문과 함께 자주 사용되며 원소의 순서와 값을 출력할 수 있다. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 156,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "<enumerate at 0x7fe4bde2f740>"
+      ]
+     },
+     "execution_count": 156,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "my_stocks={'ss': 10, 'lg': 5, 'sk': 5}\n",
+    "my_stocks=enumerate(my_stocks)\n",
+    "my_stocks"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 157,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0 : ss 10\n",
+      "1 : lg 5\n",
+      "2 : sk 5\n",
+      "3 : naver 20\n"
+     ]
+    }
+   ],
+   "source": [
+    "my_stocks={'ss': 10, 'lg': 5, 'sk': 5, 'naver': 20}\n",
+    "data=enumerate(my_stocks)\n",
+    "for i, j in data:\n",
+    "  print(i, \":\", j, my_stocks[j])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 158,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "ss 10\n",
+      "lg 5\n",
+      "sk 5\n",
+      "naver 20\n"
+     ]
+    }
+   ],
+   "source": [
+    "my_stocks={'ss': 10, 'lg': 5, 'sk': 5, 'naver': 20}\n",
+    "data=enumerate(my_stocks)\n",
+    "for key in my_stocks.keys( ):\n",
+    "  print(key, my_stocks[key])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 159,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "550\n"
+     ]
+    }
+   ],
+   "source": [
+    "scores=[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]\n",
+    "total=0\n",
+    "for i in range(len(scores)):\n",
+    "  # print(i+1, scores[i]) # 주석이므로 이 부분은 실행되지 않음\n",
+    "  total+=scores[i]\n",
+    "print(total)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 160,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0 10 10\n",
+      "1 20 30\n",
+      "2 30 60\n",
+      "3 40 100\n",
+      "4 50 150\n",
+      "5 60 210\n",
+      "6 70 280\n",
+      "7 80 360\n",
+      "8 90 450\n",
+      "9 100 550\n"
+     ]
+    }
+   ],
+   "source": [
+    "scores=[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]\n",
+    "sum=0\n",
+    "for i, j in enumerate(scores):\n",
+    "  sum=sum+scores[i]\n",
+    "  print(i, j, sum)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "다음 코드는 앞에서 sum 함수를 변수로 선언하였기에 2행의 sum(scores) 합계가 구해지는 것이 아니라 TypeError가 표시된다."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 161,
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "TypeError",
+     "evalue": "'int' object is not callable",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
+      "Cell \u001b[0;32mIn[161], line 2\u001b[0m\n\u001b[1;32m      1\u001b[0m scores\u001b[38;5;241m=\u001b[39m[\u001b[38;5;241m10\u001b[39m, \u001b[38;5;241m20\u001b[39m, \u001b[38;5;241m30\u001b[39m, \u001b[38;5;241m40\u001b[39m, \u001b[38;5;241m50\u001b[39m, \u001b[38;5;241m60\u001b[39m, \u001b[38;5;241m70\u001b[39m, \u001b[38;5;241m80\u001b[39m, \u001b[38;5;241m90\u001b[39m, \u001b[38;5;241m100\u001b[39m]\n\u001b[0;32m----> 2\u001b[0m \u001b[38;5;28;43msum\u001b[39;49m\u001b[43m(\u001b[49m\u001b[43mscores\u001b[49m\u001b[43m)\u001b[49m\n",
+      "\u001b[0;31mTypeError\u001b[0m: 'int' object is not callable"
+     ]
+    }
+   ],
+   "source": [
+    "scores=[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]\n",
+    "sum(scores)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 162,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "550"
+      ]
+     },
+     "execution_count": 162,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "del sum\n",
+    "scores=[10, 20, 30, 40, 50, 60, 70, 80, 90, 100]\n",
+    "sum(scores)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### extend 함수"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 163,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "[1, 2, 3, 4, 5, [6, 7], 6, 7]\n"
+     ]
+    }
+   ],
+   "source": [
+    "list=[1, 2, 3, 4, 5]\n",
+    "list.append([6, 7])\n",
+    "list.extend([6, 7])\n",
+    "print(list)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 164,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[2000, 140000, 200000, 15000, 1, 2, 3, 4, 1, 2, 3, 4]"
+      ]
+     },
+     "execution_count": 164,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "prices=[2000, 140000, 200000, 15000, 1, 2, 3, 4]\n",
+    "x=[1,2,3,4]\n",
+    "prices.extend(x)\n",
+    "prices"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### sorted 함수\n",
+    "- sorted 함수를 이용한 정렬"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 165,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[1, 2, 3, 4]"
+      ]
+     },
+     "execution_count": 165,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x=[4, 1, 2, 3]\n",
+    "y=sorted(x)\n",
+    "y"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 166,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[-4, 3, -2, 1]"
+      ]
+     },
+     "execution_count": 166,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "x=sorted([-4, 1, -2, 3], key=abs, reverse=True)\n",
+    "x\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 167,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "{'apple': 3, 'banana': 2, 'cherry': 1, 'melon': 1}"
+      ]
+     },
+     "execution_count": 167,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "fruits=[\"apple\", \"apple\",\"apple\",\"banana\",\"banana\", \"cherry\", \"melon\"]\n",
+    "word_counts={}\n",
+    "for word in fruits:\n",
+    "  if word in word_counts:\n",
+    "    word_counts[word]+=1\n",
+    "  else:\n",
+    "    word_counts[word]=1\n",
+    "word_counts"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 168,
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "[('apple', 3), ('banana', 2), ('cherry', 1), ('melon', 1)]"
+      ]
+     },
+     "execution_count": 168,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "wc=sorted(word_counts.items( ),\n",
+    "  key=lambda word_and_count: word_and_count[1],\n",
+    "  reverse=True)\n",
+    "wc"
+   ]
+  }
+ ],
+ "metadata": {
+  "colab": {
+   "authorship_tag": "ABX9TyPhdGny0KcwMEyd0nk1mAVP",
+   "provenance": []
+  },
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}
