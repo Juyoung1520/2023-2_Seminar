@@ -1,0 +1,61 @@
+
+#ㅡㅡㅡㅡㅡㅡㅡ [ts데이터] ㅡㅡㅡㅡㅡㅡㅡ#
+
+# 웹페이지로부터 데이터셋 불러오기
+url <- "http://jse.amstat.org/datasets/utility.dat.txt"
+
+# 불러온 데이터셋을 데이터프레임으로 저장하기
+utility <- read.table(url)
+utility
+
+# 시계열 객체로 변환하기 with ts()함수
+utility.ts <- ts(data=utility[7], start=c(1990,9),
+                 frequency=12)
+utility.ts
+class(utility.ts)
+
+# plot 함수로 그래프 그리기
+plot(utility.ts)
+
+# 그래프 파라미터 조정하기
+plot(utility.ts, col='blue', lwd=2, 
+     xlab='Year', ylab='Electricity Usage', 
+     main='Electricity Usage Trend of Boston Area')
+
+# 시계열 데이터의 속성 추출
+start(utility.ts)       # 첫번째 관측값의 시간 추출
+end(utility.ts)         # 마지막 관측값의 시간 추출
+frequency(utility.ts)   # 
+deltat(utility.ts)      # delta-t 함수 : 관측값 간의 시간간격을 산출함. frequency 함수로부터 반환된 값의 역수로 계산할 수 있다.
+time(utility.ts)        # time 함수는 각 관측값이 추출되는 시점을, 동일한 간격의 시계열 값으로 반환s
+cycle(utility.ts)       # 각 관측값에 대응되는 주기의 일련번호를 반환 (※주기는 매 시간마다 반복된다.)
+window(utility.ts)      # 하위 집합(Subset)을 생성하며, parameter 조정으로 설정 가능
+window(utility.ts, start=c(1991,1), end=c(1992,6))
+
+# window() 함수에 frequency() 인수를 지정하여, 단위 시간당 관측값의 갯수를 새로이 정의할 수 있다.
+window(utility.ts, start=c(1991,1), frequency=1)
+
+
+#ㅡㅡㅡㅡㅡㅡㅡㅡ[ACF,차분]ㅡㅡㅡㅡㅡㅡㅡㅡ#
+install.packages('fpp2')
+library(fpp2)
+head(goog200)
+
+plot(goog200, col='black', lwd=2, xlab='Day', ylab='Dollars',
+     main="Google Stock Prices")
+
+library(forecast)
+Acf(goog200, main="Google Stock Prices")
+
+ndiffs(goog200)
+dgoog200 <- diff(goog200)
+head(dgoog200)
+
+plot(dgoog200, col='blue', lwd=2, xlab="Day", ylab='Dollars',
+     main = 'Google Stock Prices\nTransformed by Difference')
+Acf(dgoog200, main='Google Stock Prices\nTransformed by Difference')
+
+
+library(tseries)
+adf.test(goog200)
+adf.test(dgoog200)
