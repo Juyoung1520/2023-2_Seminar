@@ -1,0 +1,71 @@
+---
+title: "시간의지평선_4차_실습코드"
+output: html_document
+date: "2023-10-11"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+setwd("./downloads")
+sp500 <- read.csv("s&p500.csv")
+print(sp500)
+library(forecast)
+library(quantmod)
+
+# 시계열 객체 생성
+ts_sp500 <- ts(sp500$Adj.Close, start = c(2018, 10), frequency = 365)
+print(ts_sp500)
+
+summary(meanf(ts_sp500))
+autoplot(meanf(ts_sp500), main='s&p mean plot', ylab='index')
+
+#평균 모델 예시
+#단순 평균 
+sliced_data <- window(ts_sp500, start=c(2020, 10), end=c(2020, 30))
+print(sliced_data)
+autoplot(meanf(sliced_data), main='s&p mean plot', ylab='index')
+autoplot(meanf(sliced_data, bootstrap = TRUE), main='s&p mean plot', ylab='index')
+
+#단순 모델 예시
+#시차 10의 미래데이터 80%, 95% 예측구간
+#마지막 값이 미래에도 지속 될 것
+#ts_sp500 %>% naive() %>% autoplot(main="naive")
+sliced_data %>% naive() %>% summary()
+sliced_data %>% naive() %>% autoplot(main="naive")
+
+#계절성 단순 모델
+#계절성 고려
+#기본 lag2 미래 데이터
+#ts_sp500 %>% snaive() %>% autoplot(main="snaive")
+#sliced_data %>% snaive() %>% summary()
+sliced_data %>% snaive(2) %>% autoplot(main="snaive")
+
+#랜덤워크 모델
+#현재값에 랜덤값 영향 결정
+#drift 랜덤워크 모델 기반 예측값 시간의 흐름에 따라 증가 or 감소
+sliced_data %>% rwf(drift = T) %>% autoplot(main="RandomWalk")
+ts_sp500 %>% rwf(drift = T) %>% autoplot(main="RandomWalk")
+whitenoise <- ts(rnorm(100), start=1)
+ts.plot(whitenoise, ylab= '')
+whitenoise.to.randomwalk <- cumsum(whitenoise)
+ts.plot(whitenoise.to.randomwalk, ylab='')
+
+autoplot(sliced_data) +
+  autolayer(meanf(sliced_data), PI = FALSE, series = '평균') +
+  autolayer(naive(sliced_data), PI = FALSE, series = '단순') +
+  autolayer(snaive(sliced_data), PI = FALSE, series = '계절성단순') +
+  autolayer(rwf(sliced_data), PI = FALSE, series = '랜덤워크') +
+  autolayer(rwf(sliced_data, drift = TRUE), PI = FALSE, series = '드리프트')
+
+ts_sp500.lm <- tslm(ts_sp500 ~ trend, data = ts_sp500)
+summary(ts_sp500.lm)
+ts_sp500.lm %>% forecast() %>% autoplot()
+
+
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
